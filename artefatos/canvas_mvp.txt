@@ -1,0 +1,54 @@
+PERSONAS SEGMENTADAS
+a) Cristiano -> Homem, 33 anos, solteiro, estudante de Análise de Sistemas, programador. Erik tem muitas tarefas ao longo dias, tem divesos gastos e receitas, porém não tem controle sobre nenhum destes.
+
+b) Fernanda -> Mulher, 40 anos, contadora, divorciada, dois filhos. Fernanda tem muitas tarefas ligadas ao trabalho, aos cuidados de casa e dos filhos, fora gastos com estes últimos. Ela usa Excel para fazer estes controles, porém sente falta de algo mais prático.
+
+c) Marcelo -> Homem, 35 anos, casado, motorista, uma filha. Marcelo trabalha como motorista entregando peças de carro em Porto Alegre e arredores, ele recebe uma lista no início da manhã com as entregas que tem de fazer no serviço e não tem controle nenhum com os gastos em casa.
+
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+JORNADAS
+a) Cristiano durante a viagem de ônibus vai tentando lembra tudo que tem pra fazer serviço, na volta pra casa tenta lembrar se tem alguma coisa da faculdade para fazer, apesar de ter uma tarefa da faculdade para entregar, ele não lembra e acaba não entregando. Durante a noite na hora de fazer a janta, ele pensa em pedir algo no Ifood, porém não sabe quanto já gastou com pedidos no aplicativo no mês e acaba desistindo de pedir comida.
+
+b) Fernanda na saída do serviço vai tomar uma cerveja com as colegas do trabalho, no outro dia alguns minutos antes do expediente ela abre sua planilha de gastos para anotar o gasto com cafézinho no caminho para o serviço e lembra que tem de registrar as cervejas do dia anterior, porém como ela não tinha como cadastrar na hora e esqueceu o valor que gastou, acaba botando um valor qualquer.
+
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+PROPOSTA DO MVP
+Criar um sistema web para que as pessoas criar listas de tarefas e gerenciar seus gastos e receitas, tendo assim uma gestão pessoal melhor.
+
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+FUNCIONALIDADES
+* CRUD de tags;
+* CRUD de tarefas;
+* CRUD de gastos/receitas;
+* Relatórios de tarefas;
+* Relatórios financeiros
+
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+
+RESULTADO ESPERADO
+Fazer que as pessoas tenham uma organização melhor das suas vidas, permitindo que elas vejas as tarefas que já fizeram, quais deixaram de fazer, as que terão de cuidar ao passo que saibam mais precisamente como estão suas vidas financeiras, ao mostrar quanto estão ganhando, quanto estão gastando e como está se dando estes gastos.
+
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+
+MÉTRICAS PARA VALIDAR AS HIPÓTESES DO NEGÓCIO
+Testes de aceite com alguns dos usuários que se predispuseram a usar a ferramenta.
+
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+
+
+CUSTO E CRONOGRAMA
+* $ 5.00 -> plano básico na Digital Ocean;
+* 02/10/2020 a 09/10/2020 -> Configuração do ambiente;
+* 09/10/2020 a 27/11/2020 -> Desenvolvimente do sistema;
+* 27/11/2020 a 18/12/2020 -> Testes
