@@ -1,0 +1,36 @@
+OBJETIVOS GERAIS E ESPECÍFICOS DO PROJETO
+* Organizar melhor os gastos e despesas das pessoas;
+* Organizar as tarefas do dia-a-dia;
+* Permitir que as pessoas possam visualizar como estão gastando seu dinheiro e seu tempo
+
+
+--------------------------------------------------------------------------
+
+PRIORIZAR E ESTIMAR AS FEATURES DO MVP
+* Configuração do ambiente, 25/09 a 02/10;
+* Entrega da documentação parcial, 23/10;
+* Cadastro de tags, 23/10 a 30/10;
+* Cadastro de tarefas, 23/10 a 30/10;
+* Cadastro de lançamentos, 23/10 a 30/10;
+* Criar protótipo das telas, 02/10 a 09/10;
+* Cadastro de usuários e login, 09/10 a 16/10;
+* Criar dashboard, 30/10 a 06/11
+
+
+--------------------------------------------------------------------------
+
+DESCREVER EM ITENS AS FERRAMENTAS/TECNOLOGIAS SERÃO UTILIZADAS NO STACK TECNOLÓGICO E O MOTIVO DO SEU USO
+* Trelo -> Vai ser usado para gerenciar as atividas;
+* Github -> Usado por ser uma plataforma aberta, que todos conhecemos e para fazer o versionamento;
+* PHP -> Usado no server-side, por ser uma linguagem já estabelecida e ser amplamente usada neste tipo de sistemas web;
+* Laravel -> Usado por ser um framework MVC bastante popular e com uma serie de recursos úteis;
+* HTML, CSS e JS -> Usado para a criação do front-end;
+* Bootstrap -> Usado pela sua facilidade e agilidade para desenvolver o front-end;
+* Nginx -> Servidor web utilizado, estamos usando por ser bastante eficiente e difundido;
+* PostgreSQL -> Usado por ser um banco bastante utilizado, por atender bem a nossa demanda;
+
+--------------------------------------------------------------------------
+
+DESCREVER QUAL A METODOLOGIA SERÁ UTILIZADA NO PROJETO E O PORQUÊ
+
+Optamos por usar o modelo cascata pois vai ser um projeto pequeno, já levantamos os requisitos, funcionalidades, já fizemos uma pesquisa de opinião e temos uma ideia fechada já de como vai ficar a versão inicial.
