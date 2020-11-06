@@ -15,5 +15,7 @@
 	@endif
 	@include('layout.menu_bottom')
 	@include('layout.scripts')
+	@include('tags.md_add_tag')
+	@include('toast_aviso')
 </body>
 </html>
