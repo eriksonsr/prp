@@ -34,4 +34,10 @@ class TagsController extends Controller
     		'dados' => ['tags' => $tags]
     	]);
 	}
+
+	public function TagsJson()
+	{
+		$tags = Tags::where('id_user', Auth::user()->id)->orderBy('tag')->get();
+		return json_encode($tags);
+	}
 }

@@ -17,7 +17,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary" id="bt_salvar_tag">Adicionar</button>
+        <button type="button" class="btn btn-primary" onclick="addTag(this);">Adicionar</button>
       </div>
     </div>
   </div>
