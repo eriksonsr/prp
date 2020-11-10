@@ -25,4 +25,13 @@ class TagsController extends Controller
 			return json_encode(['status' => 'Erro', 'msg' => 'Ocorreu um erro ao adicionar a tag']);
 		}
 	}
+
+	public function Listar()
+	{
+		$tags = Tags::where('id_user', Auth::user()->id)->orderBy('tag')->get();
+		return view('layout.app', [
+    		'view' => 'tags.listar',
+    		'dados' => ['tags' => $tags]
+    	]);
+	}
 }

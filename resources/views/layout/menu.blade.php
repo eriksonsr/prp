@@ -20,8 +20,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown_tags" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tags</a>
         <div class="dropdown-menu" aria-labelledby="dropdown_tags">
-          <a class="dropdown-item" href="#">Adicionar</a>
-          <a class="dropdown-item" href="#">Listar</a>
+          <a class="dropdown-item" href="<?= route('tags.listar') ?>">Listar</a>
         </div>
       </li>
     </ul>

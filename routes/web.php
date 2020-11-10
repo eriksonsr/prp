@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::group(['prefix' => 'tags', 'middleware' => 'auth'], function(){
 	Route::post('salvar', 'TagsController@Salvar');
+	Route::get('listar', 'TagsController@Listar')->name('tags.listar');
 });
