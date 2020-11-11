@@ -15,7 +15,7 @@
 					<tr data-tr-tag="{{$t->id}}">
 						<td>{{$t->tag}}</td>
 						<td>
-							<button class="btn btn-success btn-sm text-center">
+							<button class="btn btn-success btn-sm text-center" onclick="modalEditarTag({{$t->id}}, '{{$t->tag}}');">
 								<i class="fa fa-edit"></i>
 							</button>
 							<button class="btn btn-danger btn-sm text-center">
@@ -32,3 +32,4 @@
     </button>
 </section>
 @include('tags.md_add_tag')
+@include('tags.md_editar_tag')
