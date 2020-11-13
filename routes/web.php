@@ -22,4 +22,5 @@ Route::group(['prefix' => 'tags', 'middleware' => 'auth'], function(){
 	Route::get('listar', 'TagsController@Listar')->name('tags.listar');
 	Route::get('tags_json', 'TagsController@TagsJson');
 	Route::post('salvar_edicao', 'TagsController@SalvarEdicao');
+	Route::delete('deletar/{id_tag}', 'TagsController@Deletar');
 });

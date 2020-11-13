@@ -35,3 +35,23 @@ function salvarTagEditada(){
 		}
 	});
 }
+
+function deletarTag(id, tag){
+	var deletar = confirm(`Deseja realmente excluir a tag "${tag}"?`);
+	if (deletar){
+		$.ajax({
+			url: 'http://' + location.hostname + '/tags/deletar/' + id,
+			type: "DELETE",
+			dataType: "json",
+			success: function(data){
+				if (data.status == 'Sucesso'){
+					atualizaTabelaTags();
+				}else{
+					$('#toast_aviso_titulo').text('TAG');
+					$('#toast_aviso_msg').text(data.msg);
+					$('#toast_aviso').toast('show');
+				}
+			}
+		});
+	}
+}

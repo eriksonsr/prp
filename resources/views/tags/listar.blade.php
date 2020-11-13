@@ -18,7 +18,7 @@
 							<button class="btn btn-success btn-sm text-center" onclick="modalEditarTag({{$t->id}}, '{{$t->tag}}');">
 								<i class="fa fa-edit"></i>
 							</button>
-							<button class="btn btn-danger btn-sm text-center">
+							<button class="btn btn-danger btn-sm text-center" onclick="deletarTag({{$t->id}}, '{{$t->tag}}')">
 								<i class="fa fa-remove"></i>
 							</button>
 						</td>

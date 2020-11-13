@@ -50,7 +50,7 @@ function atualizaTabelaTags()
 						<button class="btn btn-success btn-sm text-center" onclick="modalEditarTag(${v.id}, '${v.tag}');">
 							<i class="fa fa-edit"></i>
 						</button>
-						<button class="btn btn-danger btn-sm text-center">
+						<button class="btn btn-danger btn-sm text-center" onclick="deletarTag(${v.id}, '${v.tag}');">
 							<i class="fa fa-remove"></i>
 						</button>
 					</td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Tags;
+use App\TagsLancamentos;
 
 class TagsController extends Controller
 {
@@ -58,6 +59,21 @@ class TagsController extends Controller
 			return json_encode(['status' => 'Sucesso', 'msg' => 'Tag editada com sucesso!']);
 		} catch (Exception $e) {
 			return json_encode(['status' => 'Erro', 'msg' => 'Ocorreu um erro ao editar a tag.']);
+		}
+	}
+
+	public function Deletar($id_tag)
+	{
+		$tags = TagsLancamentos::where('id_tag', $id_tag)->get();
+		if (count($tags) > 0) {
+			return json_encode(['status' => 'Erro', 'msg' => 'Não foi possível excluir a tag pois existem lançamentos usando a mesma!']);
+		}else{
+			$tag = Tags::find($id_tag);
+			if ($tag->delete()) {
+				return json_encode(['status' => 'Sucesso', 'msg' => 'Tag excluída com sucesso!']);
+			}else{
+				return json_encode(['status' => 'Erro', 'msg' => 'Ocorreu um erro ao excluir a tag.']);
+			}
 		}
 	}
 }
