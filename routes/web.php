@@ -24,3 +24,7 @@ Route::group(['prefix' => 'tags', 'middleware' => 'auth'], function(){
 	Route::post('salvar_edicao', 'TagsController@SalvarEdicao');
 	Route::delete('deletar/{id_tag}', 'TagsController@Deletar');
 });
+
+Route::group(['prefix' => 'lancamentos', 'middleware' => 'auth'], function(){
+	Route::get('listar', 'LancamentosController@Listar')->name('lancamentos.listar');
+});
