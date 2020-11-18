@@ -29,4 +29,16 @@ class Utils
 
 		return $dias[\DateTime::createFromFormat('Y-m-d', $data)->format('l')];
 	}
+
+	public static function DataPtBrToDb($data)
+	{
+		$data = explode('/', $data);
+		return $data[2] . '-' . $data[1] . '-' . $data[0];
+	}
+
+	public static function RealToDecimal($valor)
+	{
+		$v_final = str_replace(',', '.', str_replace('.', '', $valor));
+		return $v_final;
+	}
 }

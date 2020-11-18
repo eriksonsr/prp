@@ -6,7 +6,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown_lancamentos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lançamentos</a>
         <div class="dropdown-menu" aria-labelledby="dropdown_lancamentos">
-          <a class="dropdown-item" href="#">Adicionar</a>
+          <a class="dropdown-item add_lancamento" href="#">Adicionar</a>
           <a class="dropdown-item" href="<?= route('lancamentos.listar') ?>">Listar</a>
         </div>
       </li>

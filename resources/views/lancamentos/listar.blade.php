@@ -4,7 +4,7 @@ extract($dados);
 ?>
 <section class="container mt-2 mb-4">
 	<h3>Lançamentos</h3>
-	<button class="btn btn-success btn-sm text-center mb-2">
+	<button class="btn btn-success btn-sm text-center add_lancamento mb-2">
 		Add lançamento
     </button>
 	<div class="row">
@@ -42,9 +42,8 @@ extract($dados);
 			</tbody>
 		</table>
 	</div>
-	<button class="btn btn-success btn-sm text-center">
+	<button class="btn btn-success btn-sm text-center add_lancamento">
 		Add lançamento
     </button>
 </section>
-@include('tags.md_add_tag')
-@include('tags.md_editar_tag')
+@include('lancamentos.md_add_lancamento')
