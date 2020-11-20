@@ -2,11 +2,6 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active" style="margin-right: 10px">
-        <button class="btn btn-success btn-sm text-center">
-          <i class="fa fa-check-square-o"></i>
-        </button>
-      </li>
-      <li class="nav-item active" style="margin-right: 10px">
         <button class="btn btn-success btn-sm text-center add_lancamento">
           <i class="fa fa-dollar"></i>
         </button>
