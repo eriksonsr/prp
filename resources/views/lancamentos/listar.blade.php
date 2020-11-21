@@ -7,6 +7,9 @@ extract($dados);
 	<button class="btn btn-success btn-sm text-center add_lancamento mb-2">
 		Add lançamento
     </button>
+	<button class="btn btn-success btn-sm text-center bt_filtra_lancamentos mb-2">
+		Filtros
+    </button>
 	<div class="row">
 		<table class="table table-striped table-hover" id="table_lancamentos">
 			<thead>
@@ -45,5 +48,9 @@ extract($dados);
 	<button class="btn btn-success btn-sm text-center add_lancamento">
 		Add lançamento
     </button>
+	<button class="btn btn-success btn-sm text-center bt_filtra_lancamentos">
+		Filtros
+    </button>
 </section>
 @include('lancamentos.md_add_lancamento')
+@include('lancamentos.md_filtros_lancamentos')
