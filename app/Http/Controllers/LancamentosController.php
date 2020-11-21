@@ -20,6 +20,9 @@ class LancamentosController extends Controller
     		'dados' => [
                 'lancamentos' => $lancamentos,
                 'tags' => Tags::where('id_user', Auth::user()->id)->orderBy('tag')->get()
+            ],
+            'scripts' => [
+                ['tipo' => 'local', 'caminho' => 'lancamentos']
             ]
     	]);
 	}
@@ -48,23 +51,51 @@ class LancamentosController extends Controller
         }
     }
 
-    public function LancamentosJson()
+    public function LancamentosJson(Request $request)
     {
-        $lancamentos = Lancamentos::where('id_user', Auth::user()->id)->orderBy('data', 'desc')->get();
-        foreach ($lancamentos as $l) {
-            $l->data = Utils::DataDbToPtBr($l->data) . ', '. Utils::DiaSemanaFromDataDb($l->data);
-            $l->valor = 'R$ ' . Utils::DecimalToReal($l->valor);
-            if ($l->tipo == 'd') {
-                $l->tipo = 'Despesa';
-            }else{
-                $l->tipo = 'Receita';
+        $retorno = ['status' => '', 'msg' => '', 'dados' => ''];
+        try {
+            $filtros = ['id_user' => Auth::user()->id];
+            if ($request->input('filtros')) {
+                if (isset($request->input('filtros')['descricao']) && !empty($request->input('filtros')['descricao'])) {
+                    $filtros['descricao'] = $request->input('filtros')['descricao'];
+                }
+                if (isset($request->input('filtros')['valor']) && !empty($request->input('filtros')['valor'])) {
+                    $filtros['valor'] = $request->input('filtros')['valor'];
+                    $filtros['criterio_valor'] = $request->input('filtros')['criterio_valor'];
+                }
+                if (isset($request->input('filtros')['data_inicial']) && !empty($request->input('filtros')['data_inicial'])) {
+                    $filtros['data_inicial'] = $request->input('filtros')['data_inicial'];
+                    $filtros['criterio_data_inicial'] = $request->input('filtros')['criterio_data_inicial'];
+                }
+                if (isset($request->input('filtros')['data_final']) && !empty($request->input('filtros')['data_final'])) {
+                    $filtros['data_final'] = $request->input('filtros')['data_final'];
+                    $filtros['criterio_data_final'] = $request->input('filtros')['criterio_data_final'];
+                }
+                if (isset($request->input('filtros')['tipo']) && !empty($request->input('filtros')['tipo'])) {
+                    if ($request->input('filtros')['tipo'] == 'r' || $request->input('filtros')['tipo'] == 'd') {
+                        $filtros['tipo'] = $request->input('filtros')['tipo'];
+                    }
+                }
+                if (isset($request->input('filtros')['ids_tags']) && !empty($request->input('filtros')['ids_tags'])) {
+                    $filtros['ids_tags'] = $request->input('filtros')['ids_tags'];
+                }
             }
-            $tags = [];
-            foreach ($l->Tags()->orderBy('tag')->get() as $t){
-                array_push($tags, $t->tag);
+            $dados = Lancamentos::Busca($filtros);
+            $qtd_registros = count($dados);
+            $valor_total = 0;
+            foreach ($dados as $v) {
+                $valor_total += $v->valor;
+                $v->valor = Utils::DecimalToReal($v->valor);
             }
-            $l->tags = implode(', ', $tags);
+            return json_encode([
+                'status' => 'Sucesso', 
+                'dados' => $dados,
+                'qtd_registros' => $qtd_registros,
+                'valor_total' => Utils::DecimalToReal($valor_total)
+            ]);
+        } catch (Exception $e) {
+            return json_encode(['status' => 'Erro', 'msg' => 'Ocorreu um erro ao fazer a busca.']);
         }
-        return json_encode($lancamentos);
     }
 }

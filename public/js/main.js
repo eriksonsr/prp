@@ -144,12 +144,12 @@ function atualizaTabelaLancamentos()
 	var tabela = $('#table_lancamentos tbody');
 	$(tabela).html('');
 	$.getJSON('http://' + location.hostname + '/lancamentos/lancamentos_json', function(result){
-		$.each(result, function(i, v){
+		$.each(result.dados, function(i, v){
 			$(tabela).append(`
 				<tr>
 					<td>${v.descricao}</td>
 					<td>${v.data}</td>
-					<td>${v.valor}</td>
+					<td>R$ ${v.valor}</td>
 					<td>${v.tags}</td>
 					<td>
 						<button class="btn btn-success btn-sm text-center">
