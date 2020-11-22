@@ -21,7 +21,11 @@ extract($dados);
 			</thead>
 			<tbody>
 				@foreach ($lancamentos as $l)
-					<tr>
+					@if($l->tipo == 'r')
+					<tr class="table-success">
+					@else
+					<tr class="table-danger">
+					@endif
 						<td>{{$l->descricao}}</td>
 						<td>{{Utils::DataDbToPtBr($l->data)}}, {{Utils::DiaSemanaFromDataDb($l->data)}}</td>
 						<td>R$ {{Utils::DecimalToReal($l->valor)}}</td>

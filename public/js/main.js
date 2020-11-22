@@ -145,8 +145,13 @@ function atualizaTabelaLancamentos()
 	$(tabela).html('');
 	$.getJSON('http://' + location.hostname + '/lancamentos/lancamentos_json', function(result){
 		$.each(result.dados, function(i, v){
+			var cor = 'danger';
+			if (v.tipo == 'Receita' || v.tipo == 'r'){
+				cor = 'success';
+			};
+
 			$(tabela).append(`
-				<tr>
+				<tr class="table-${cor}">
 					<td>${v.descricao}</td>
 					<td>${v.data}</td>
 					<td>R$ ${v.valor}</td>
