@@ -80,3 +80,23 @@ function filtrarLancamentos(){
 		}
 	});
 }
+
+function deletarLancamento(id, lancamento){
+	var deletar = confirm(`Deseja realmente excluir o lancamento "${lancamento}"?`);
+	if (deletar){
+		$.ajax({
+			url: 'http://' + location.hostname + '/lancamentos/deletar/' + id,
+			type: "DELETE",
+			dataType: "json",
+			success: function(data){
+				if (data.status == 'Sucesso'){
+					atualizaTabelaLancamentos();
+				}else{
+					$('#toast_aviso_titulo').text('LANÇAMENTOS');
+					$('#toast_aviso_msg').text(data.msg);
+					$('#toast_aviso').toast('show');
+				}
+			}
+		});
+	}
+}

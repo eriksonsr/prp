@@ -29,4 +29,5 @@ Route::group(['prefix' => 'lancamentos', 'middleware' => 'auth'], function(){
 	Route::get('listar', 'LancamentosController@Listar')->name('lancamentos.listar');
 	Route::post('salvar', 'LancamentosController@Salvar');
 	Route::get('lancamentos_json', 'LancamentosController@LancamentosJson');
+	Route::delete('deletar/{id_tag}', 'LancamentosController@Deletar');
 });

@@ -160,7 +160,7 @@ function atualizaTabelaLancamentos()
 						<button class="btn btn-success btn-sm text-center">
 							<i class="fa fa-edit"></i>
 						</button>
-						<button class="btn btn-danger btn-sm text-center">
+						<button class="btn btn-danger btn-sm text-center" onclick="deletarLancamento(${v.id}, '${v.descricao}');">
 							<i class="fa fa-remove"></i>
 						</button>
 					</td>

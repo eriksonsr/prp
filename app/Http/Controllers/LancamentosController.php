@@ -97,5 +97,16 @@ class LancamentosController extends Controller
         } catch (Exception $e) {
             return json_encode(['status' => 'Erro', 'msg' => 'Ocorreu um erro ao fazer a busca.']);
         }
+    }   
+
+    public function Deletar($id_lancamento)
+    {
+        try {
+            Lancamentos::where('id_user', Auth::user()->id)->where('id', $id_lancamento)->delete();
+            TagsLancamentos::where('id_lancamento', $id_lancamento)->delete();
+            return json_encode(['status' => 'Sucesso', 'msg' => 'Lançamento excluído com sucesso!']);
+        } catch (Exception $e) {
+            return json_encode(['status' => 'Erro', 'msg' => 'Ocorreu um erro ao excluir lançamento.']);
+        }
     }
 }
