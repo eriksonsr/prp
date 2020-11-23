@@ -47,10 +47,10 @@ function filtrarLancamentos(){
 								<td>R$ ${v.valor}</td>
 								<td>${v.tags}</td>
 								<td>
-									<button class="btn btn-success btn-sm text-center">
+									<button class="btn btn-success btn-sm text-center" onclick="modalEditarLancamento(${v.id});">
 										<i class="fa fa-edit"></i>
 									</button>
-									<button class="btn btn-danger btn-sm text-center">
+									<button class="btn btn-danger btn-sm text-center" onclick="deletarLancamento(${v.id}, '{$v->descricao}')">
 										<i class="fa fa-remove"></i>
 									</button>
 								</td>
@@ -99,4 +99,89 @@ function deletarLancamento(id, lancamento){
 			}
 		});
 	}
+}
+
+function modalEditarLancamento(id){
+	$("#id_lancamento").val('');
+	$("#edit_input_descricao").val('');
+	$("#edit_input_valor").val('');
+	$("#edit_input_data").val('');
+	$('#edit_select_tags').val('').trigger('change');
+	var dados = {
+		id_lancamento: id
+	}
+
+	$.ajax({
+		url: 'http://' + location.hostname + '/lancamentos/lancamentos_json',
+		type: "GET",
+		data: {'filtros':dados},
+		dataType: "json",
+		success: function(data){
+			if (data.status == 'Sucesso'){
+				var tags_lanc = data.dados[0].tags.split(', ');
+
+				$('#id_lancamento').val(id);
+				$('#edit_input_descricao').val(data.dados[0].descricao);
+				$('#edit_input_valor').val(data.dados[0].valor);
+				$('#edit_input_data').val(data.dados[0].data);
+				if (data.dados[0].tipo_c == 'r'){
+					$('#edit_select_tipo').prop("selectedIndex", 1);
+				}else{
+					$('#edit_select_tipo').prop("selectedIndex", 0);
+				}
+
+				$('#edit_select_tags option').each(function(i, v){
+					for (var itls = 0; itls < tags_lanc.length; itls++) {
+						if ($(v).text() == tags_lanc[itls]) {
+							$(v).prop("selected", true);
+						}
+					}
+				});
+				$('#edit_select_tags').select2();
+
+				$('#md_editar_lancamento').modal('toggle');
+			}
+		},
+	});
+}
+
+function SalvarLancamentoEditado(botao_salvar){
+	$(botao_salvar).attr('disabled');
+	var url = window.location.href;
+	var dados = {
+		id: $("#id_lancamento").val(),
+		descricao: $("#edit_input_descricao").val(),
+		valor: $("#edit_input_valor").val(),
+		data: $("#edit_input_data").val(),
+		tipo: $("#edit_select_tipo").val(),
+		tags: []
+	}
+
+	$("#edit_select_tags option:selected").each(function(){
+		dados.tags.push($(this).val());
+	});
+
+	$.ajax({
+		url: 'http://' + location.hostname + '/lancamentos/salvar_edicao',
+		type: "POST",
+		data: dados,
+		dataType: "json",
+		success: function(data){
+			if (data.status == 'Sucesso'){
+				atualizaTabelaLancamentos();
+				$('#md_editar_lancamento').modal('toggle');
+				$('#toast_aviso_titulo').text('LANCAMENTO');
+				$('#toast_aviso_msg').text(data.msg);
+				$('#toast_aviso').toast('show');
+			}
+		},
+		complete: function(){
+			$("#id_lancamento").val(''),
+			$("#edit_input_descricao").val(''),
+			$("#edit_input_valor").val(''),
+			$("#edit_input_data").val(''),
+			$('#edit_select_tags').val('').trigger('change');
+			$(botao_salvar).removeAttr("disabled");
+		}
+	});
 }

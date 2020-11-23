@@ -80,6 +80,9 @@ class LancamentosController extends Controller
                 if (isset($request->input('filtros')['ids_tags']) && !empty($request->input('filtros')['ids_tags'])) {
                     $filtros['ids_tags'] = $request->input('filtros')['ids_tags'];
                 }
+                if (isset($request->input('filtros')['id_lancamento']) && !empty($request->input('filtros')['id_lancamento'])) {
+                    $filtros['id_lancamento'] = $request->input('filtros')['id_lancamento'];
+                }
             }
             $dados = Lancamentos::Busca($filtros);
             $qtd_registros = count($dados);
@@ -107,6 +110,29 @@ class LancamentosController extends Controller
             return json_encode(['status' => 'Sucesso', 'msg' => 'Lançamento excluído com sucesso!']);
         } catch (Exception $e) {
             return json_encode(['status' => 'Erro', 'msg' => 'Ocorreu um erro ao excluir lançamento.']);
+        }
+    }
+
+    public function SalvarEdicao(Request $request)
+    {
+        try {
+            $lancamento = Lancamentos::find($request->input('id'));
+            $lancamento->descricao = $request->input('descricao');
+            $lancamento->valor = Utils::RealToDecimal($request->input('valor'));
+            $lancamento->data = Utils::DataPtBrToDb($request->input('data'));
+            $lancamento->tipo = $request->input('tipo');
+            if ($lancamento->save()) {
+                TagsLancamentos::where('id_lancamento', $lancamento->id)->delete();
+                foreach ($request->input('tags') as $t) {
+                    $tag_lanc = new TagsLancamentos();
+                    $tag_lanc->id_tag = $t;
+                    $tag_lanc->id_lancamento = $lancamento->id;
+                    $tag_lanc->save();
+                }
+            }
+            return json_encode(['status' => 'Sucesso', 'msg' => 'Lançamento editado com sucesso!']);
+        } catch (Exception $e) {
+            return json_encode(['status' => 'Erro', 'msg' => 'Ocorreu um erro ao editar o lançamento.']);
         }
     }
 }

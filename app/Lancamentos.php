@@ -48,6 +48,10 @@ class Lancamentos extends Model
 
     		if (isset($filtros['id_user'])){
 				$filtros_str .= ' AND l.id_user = ' . $filtros['id_user'];
+    		} 		
+
+    		if (isset($filtros['id_lancamento'])){
+				$filtros_str .= ' AND l.id = ' . $filtros['id_lancamento'];
     		}
     	}
 
@@ -56,6 +60,7 @@ class Lancamentos extends Model
 				    l.descricao,
 				    l.valor,
 				    to_char(l.data, 'dd/mm/yyyy') AS data,
+				    l.tipo AS tipo_c,
 				    CASE l.tipo
 				        WHEN 'r' THEN
 				            'Receita'
@@ -69,7 +74,7 @@ class Lancamentos extends Model
 				$filtros_str
 				GROUP BY l.id
 				ORDER BY l.data DESC";
-				
+
 		return DB::select($sql, $parametros);
     }
 }

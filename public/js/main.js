@@ -157,7 +157,7 @@ function atualizaTabelaLancamentos()
 					<td>R$ ${v.valor}</td>
 					<td>${v.tags}</td>
 					<td>
-						<button class="btn btn-success btn-sm text-center">
+						<button class="btn btn-success btn-sm text-center" onclick="modalEditarLancamento(${v.id});">
 							<i class="fa fa-edit"></i>
 						</button>
 						<button class="btn btn-danger btn-sm text-center" onclick="deletarLancamento(${v.id}, '${v.descricao}');">

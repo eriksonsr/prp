@@ -37,7 +37,7 @@ extract($dados);
 							{{implode(', ', $tags)}}
 						</td>
 						<td>
-							<button class="btn btn-success btn-sm text-center">
+							<button class="btn btn-success btn-sm text-center" onclick="modalEditarLancamento({{$l->id}});">
 								<i class="fa fa-edit"></i>
 							</button>
 							<button class="btn btn-danger btn-sm text-center" onclick="deletarLancamento({{$l->id}}, '{{$l->descricao}}')">
@@ -58,3 +58,4 @@ extract($dados);
 </section>
 @include('lancamentos.md_add_lancamento')
 @include('lancamentos.md_filtros_lancamentos')
+@include('lancamentos.md_editar_lancamento')
