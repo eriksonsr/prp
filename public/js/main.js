@@ -42,6 +42,8 @@ $(document).ready(function(){
 	$('.select_2').select2();
 	$(".data").datepicker(date_picker_config);
 	$(".real").maskMoney(mask_money_config);
+
+	GetInfosDashBoard();
 });
 
 function addTag(elemento){
@@ -170,6 +172,93 @@ function atualizaTabelaLancamentos()
   	});
 }
 
-function atualizaDadosHome(){
-	console.log('Atualizando dados home...');
+function GetInfosDashBoard(){
+	$.getJSON('http://' + location.hostname + '/get_infos_dashboard_json', function(result){
+		$('#card_v_rec_no_mes').text(`R$ ${result.tot_rec_mes_corrente}`);
+		$('#card_v_desp_no_mes').text(`R$ ${result.tot_desp_mes_corrente}`);
+		$('#card_v_rec_no_ano').text(`R$ ${result.tot_rec_ano_corrente}`);
+		$('#card_v_desp_no_ano').text(`R$ ${result.tot_desp_ano_corrente}`);
+		ExibeGraficoReceitasDespesasUltimosPeriodos(result.tot_desp_rec_ults_periodos);
+  	});
+}
+
+function ExibeGraficoReceitasDespesasUltimosPeriodos(dados){
+	var config = {
+		type: 'line',
+		data: {
+			labels: [],
+			datasets: [
+				{
+					label: 'Despesas',
+					borderColor: '#ff3c3c',
+					backgroundColor: '#ff7575',
+					data: [],
+				},
+				{
+					label: 'Receitas',
+					borderColor: '#2dff33',
+					backgroundColor: '#5eff62',
+					data: [],
+				}
+			]
+		},
+		options: {
+			responsive: true,
+			title: {
+				display: true,
+				text: 'Receitas e despesas nos últimso três meses'
+			},
+			tooltips: {
+				mode: 'index',
+				callbacks: {
+	                label: function(tooltipItem, data) {
+	                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+	                    if (label) {
+	                        label += ': ';
+	                    }
+	                    label += tooltipItem.yLabel.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
+	                    return label;
+	                }
+            	}
+			},
+			hover: {
+				mode: 'index'
+			},
+			scales: {
+				xAxes: [{
+					scaleLabel: {
+						display: true,
+						labelString: 'Mês'
+					}
+				}],
+				yAxes: [{
+					stacked: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Valor'
+					},
+					ticks: {
+						callback: function(value, index, values) {
+							return value.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
+						}
+					}
+				}]
+			}
+		}
+	};
+	config.data.labels.push(dados[0].mes);
+	config.data.labels.push(dados[2].mes);
+	config.data.labels.push(dados[4].mes);
+	for (var i = 0; i < dados.length; i++) {
+		if (dados[i].tipo == 'Despesa'){
+			config.data.datasets[0].data.push(dados[i].total);
+		}else{
+			config.data.datasets[1].data.push(dados[i].total);
+		}
+	}
+
+	window.onload = function() {
+		var ctx = document.getElementById('chart-area').getContext('2d');
+		window.myLine = new Chart(ctx, config);
+	};
 }
