@@ -179,6 +179,7 @@ function GetInfosDashBoard(){
 		$('#card_v_rec_no_ano').text(`R$ ${result.tot_rec_ano_corrente}`);
 		$('#card_v_desp_no_ano').text(`R$ ${result.tot_desp_ano_corrente}`);
 		ExibeGraficoReceitasDespesasUltimosPeriodos(result.tot_desp_rec_ults_periodos);
+		ExibeGraficoPrincipaisDespesas(result.total_principais_desp);
   	});
 }
 
@@ -257,8 +258,67 @@ function ExibeGraficoReceitasDespesasUltimosPeriodos(dados){
 		}
 	}
 
-	window.onload = function() {
-		var ctx = document.getElementById('chart-area').getContext('2d');
-		window.myLine = new Chart(ctx, config);
+	var ctx = document.getElementById('chart-area').getContext('2d');
+	window.myLine = new Chart(ctx, config);
+}
+
+function ExibeGraficoPrincipaisDespesas(dados){
+	var config = {
+	    type: 'bar',
+	    data: {
+			labels: [],
+			datasets: [{
+				label: "Tags despesas",
+				backgroundColor: "#e8c3b9",
+				data: []
+			}]
+	    },
+	    options: {
+			legend: { display: false },
+			title: {
+				display: true,
+				text: 'Principais despesas'
+			},
+			tooltips: {
+				mode: 'index',
+				callbacks: {
+	                label: function(tooltipItem, data) {
+	                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+	                    if (label) {
+	                        label += ': ';
+	                    }
+	                    label += tooltipItem.yLabel.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
+	                    return label;
+	                }
+            	}
+			},
+			scales: {
+				xAxes: [{
+					scaleLabel: {
+						display: true,
+						labelString: 'Tag'
+					}
+				}],
+				yAxes: [{
+					stacked: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Valor'
+					},
+					ticks: {
+						callback: function(value, index, values) {
+							return value.toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
+						}
+					}
+				}]
+			}
+	    }
 	};
+	for (var i = 0; i < dados.length; i++) {
+		config.data.datasets[0].data.push(dados[i].total);
+		config.data.labels.push(dados[i].tag);
+	}
+
+	var chart_principais_despesas = document.getElementById('chart_principais_despesas').getContext('2d');
+	new Chart(chart_principais_despesas, config);
 }

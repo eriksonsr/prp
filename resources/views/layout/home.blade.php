@@ -50,5 +50,12 @@
             </div>
         </div>
     </div>
+    <div class="row" style="margin-bottom: 50px;">
+        <div class="col-lg-6">
+            <div class="col-lg-12" id="canvas-holder">
+                <canvas id="chart_principais_despesas"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 @include('lancamentos.md_add_lancamento')

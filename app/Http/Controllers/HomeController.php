@@ -65,7 +65,8 @@ class HomeController extends Controller
             'tot_rec_ano_corrente' => Utils::DecimalToReal(Lancamentos::where('id_user', $user)
                 ->where('tipo', 'r')
                 ->whereYear('data', $ano_corrente)->sum('valor')),
-            'tot_desp_rec_ults_periodos' => $dados_recs_desp_p_mes_ults_meses
+            'tot_desp_rec_ults_periodos' => $dados_recs_desp_p_mes_ults_meses,
+            'total_principais_desp' => Relatorios::PrincipaisDespesas(Auth::user()->id)
         ];
         return json_encode($dados);
     }
