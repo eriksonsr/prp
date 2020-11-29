@@ -60,7 +60,7 @@ class LancamentosController extends Controller
                 if (isset($request->input('filtros')['descricao']) && !empty($request->input('filtros')['descricao'])) {
                     $filtros['descricao'] = $request->input('filtros')['descricao'];
                 }
-                if (isset($request->input('filtros')['valor']) && !empty($request->input('filtros')['valor'])) {
+                if (isset($request->input('filtros')['criterio_valor']) && !empty($request->input('filtros')['valor'])) {
                     $filtros['valor'] = $request->input('filtros')['valor'];
                     $filtros['criterio_valor'] = $request->input('filtros')['criterio_valor'];
                 }

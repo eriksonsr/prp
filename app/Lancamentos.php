@@ -53,6 +53,11 @@ class Lancamentos extends Model
     		if (isset($filtros['id_lancamento'])){
 				$filtros_str .= ' AND l.id = ' . $filtros['id_lancamento'];
     		}
+
+    		if (isset($filtros['criterio_valor']) && isset($filtros['valor'])){
+    			$filtros_str .= ' AND valor ' . $filtros['criterio_valor'] . ' :valor';
+    			$parametros['valor'] = Utils::RealToDecimal($filtros['valor']);
+    		}
     	}
 
     	$sql = "SELECT
