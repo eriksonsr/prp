@@ -1,0 +1,5 @@
+Usuário se loga no sistema para ter acesso a suas informações;
+Eu como usuário preciso ver quanto já gastei este mês;
+Eu como usuário desejo ver quanto ganhou de horas extras em determinado mês;
+Eu como usuário preciso ver um comparativo de seus gastos e ganhos nos últimos meses;
+Eu como usuário gostaria de ver quais são meus principais gasto.
