@@ -42,8 +42,10 @@ $(document).ready(function(){
 	$('.select_2').select2();
 	$(".data").datepicker(date_picker_config);
 	$(".real").maskMoney(mask_money_config);
-
-	GetInfosDashBoard();
+	
+	if (window.location.pathname == "/" || window.location.pathname == '/home'){
+		GetInfosDashBoard()
+	}
 });
 
 function addTag(elemento){
@@ -124,7 +126,7 @@ function addLancamento(elemento){
 			}
 
 			if (window.location.pathname == "/" || window.location.pathname == '/home'){
-				atualizaDadosHome()
+				GetInfosDashBoard()
 			}
 
 			$("#input_descricao").val('');
