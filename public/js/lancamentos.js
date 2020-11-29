@@ -40,8 +40,12 @@ function filtrarLancamentos(){
 					`);
 
 					$(data.dados).each(function(i, v){
+						var cor_linha = 'class="table-success"';
+						if (v.tipo_c == 'd'){
+							cor_linha = 'class="table-danger"'
+						}
 						$(tabela).append(`
-							<tr>
+							<tr ${cor_linha}>
 								<td>${v.descricao}</td>
 								<td>${v.data}</td>
 								<td>R$ ${v.valor}</td>
