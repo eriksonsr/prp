@@ -191,14 +191,12 @@ function ExibeGraficoReceitasDespesasUltimosPeriodos(dados){
 			datasets: [
 				{
 					label: 'Despesas',
-					borderColor: '#ff3c3c',
-					backgroundColor: '#ff7575',
+					backgroundColor: 'rgba(255, 99, 132, 0.3)',
 					data: [],
 				},
 				{
 					label: 'Receitas',
-					borderColor: '#2dff33',
-					backgroundColor: '#5eff62',
+					backgroundColor: 'rgba(94, 255, 98, 0.3)',
 					data: [],
 				}
 			]
@@ -269,7 +267,7 @@ function ExibeGraficoPrincipaisDespesas(dados){
 			labels: [],
 			datasets: [{
 				label: "Tags despesas",
-				backgroundColor: "#e8c3b9",
+				backgroundColor: 'rgba(255, 99, 132, 0.3)',
 				data: []
 			}]
 	    },
