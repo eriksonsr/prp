@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row" style="margin-top: 8px;">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-sm-12 col-md-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Receitas no mês</h5>
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-sm-12 col-md-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Despesas no mês</h5>
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-sm-12 col-md-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Receitas no ano</h5>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-sm-12 col-md-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Despesas no ano</h5>
@@ -42,12 +42,12 @@
         </div>
     </div>
     <div class="row" style="margin-top: 16px;">
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-sm-12 col-md-12">
             <div class="col-lg-12" id="canvas-holder">
                 <canvas id="chart-area"></canvas>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-sm-12 col-md-12">
             <div class="col-lg-12" id="canvas-holder">
                 <canvas id="chart_principais_despesas"></canvas>
             </div>
