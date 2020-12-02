@@ -2,7 +2,7 @@
 use App\Helpers\Utils;
 extract($dados);
 ?>
-<section class="container mt-2 mb-4">
+<section class="container mt-2 mb-5">
 	<h3>Lançamentos</h3>
 	<button class="btn btn-success btn-sm text-center add_lancamento mb-2">
 		Add lançamento
