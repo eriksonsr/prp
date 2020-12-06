@@ -33,3 +33,7 @@ Route::group(['prefix' => 'lancamentos', 'middleware' => 'auth'], function(){
 	Route::delete('deletar/{id_tag}', 'LancamentosController@Deletar');
 	Route::post('salvar_edicao', 'LancamentosController@SalvarEdicao');
 });
+
+Route::group(['prefix' => 'relatorios', 'middleware' => 'auth'], function(){
+	Route::get('despesas_e_receitas_p_ano', 'RelatoriosController@DespesaseReceitasPorAno')->name('relatorios.desp_e_rec_p_ano');
+});

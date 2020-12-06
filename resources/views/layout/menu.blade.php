@@ -16,6 +16,12 @@
           <a class="dropdown-item" href="<?= route('tags.listar') ?>">Listar</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown_tags" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown_tags">
+          <a class="dropdown-item" href="<?= route('relatorios.desp_e_rec_p_ano') ?>">Despesas e receitas no ano</a>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

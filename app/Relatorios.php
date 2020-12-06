@@ -38,4 +38,25 @@ class Relatorios
 		";
 		return DB::select($sql);
 	}
+
+	public static function DespesasReceitasPorAno($id_user, $ano)
+	{
+		$sql = "
+			SELECT 
+			    EXTRACT(month FROM data) mes, 
+			    SUM(valor) total, 
+			    CASE tipo
+				    WHEN 'r' THEN
+				        'Receita'
+				    ELSE
+				        'Despesa'
+				END tipo
+			FROM lancamentos
+			WHERE id_user = $id_user
+			AND EXTRACT(year FROM data) = $ano
+			GROUP BY mes, tipo
+			ORDER BY mes
+		";
+		return DB::select($sql);
+	}
 }
