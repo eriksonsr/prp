@@ -4,15 +4,19 @@ use DB;
 
 class Relatorios
 {
-	public static function ReceitasDespesasPorMesUltimosMeses($id_user)
+	public static function ReceitasDespesasPorMesUltimosMeses($id_user, $limite = Null)
 	{
+		$filtro = '';
+		if ($limite) {
+			$filtro = 'LIMIT ' . $limite;
+		}
 		$sql = "
 			SELECT EXTRACT(month FROM data) mes, EXTRACT(year FROM data) ano, SUM(valor) total, tipo
 			FROM lancamentos
 			WHERE id_user = $id_user
 			GROUP BY ano, mes, tipo
-			ORDER BY ano, mes
-			LIMIT 6
+			ORDER BY ano, mes DESC
+			$filtro
 		";
 		return DB::select($sql);
 	}

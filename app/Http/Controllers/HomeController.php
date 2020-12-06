@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function GetInfosDashBoardJson()
     {
         $tipos_lancamentos = ['r' => 'Receita', 'd' => 'Despesa'];
-        $dados_recs_desp_p_mes_ults_meses = Relatorios::ReceitasDespesasPorMesUltimosMeses(Auth::user()->id);
+        $dados_recs_desp_p_mes_ults_meses = array_reverse(Relatorios::ReceitasDespesasPorMesUltimosMeses(Auth::user()->id, 6));
         for ($i=0; $i < count($dados_recs_desp_p_mes_ults_meses); $i++) {
             $dados_recs_desp_p_mes_ults_meses[$i]->total = $dados_recs_desp_p_mes_ults_meses[$i]->total;
             $dados_recs_desp_p_mes_ults_meses[$i]->total_br = Utils::DecimalToReal($dados_recs_desp_p_mes_ults_meses[$i]->total);
