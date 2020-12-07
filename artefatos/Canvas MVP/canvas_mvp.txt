@@ -1,5 +1,5 @@
 PERSONAS SEGMENTADAS
-a) Cristiano -> Homem, 33 anos, solteiro, estudante de Análise de Sistemas, programador. Erik tem muitas tarefas ao longo dias, tem divesos gastos e receitas, porém não tem controle sobre nenhum destes.
+a) Cristiano -> Homem, 33 anos, solteiro, estudante de Análise de Sistemas, programador. Erik tem muitas tarefas ao longo dias, tem diversos gastos e receitas, porém não tem controle sobre nenhum destes.
 
 b) Fernanda -> Mulher, 40 anos, contadora, divorciada, dois filhos. Fernanda tem muitas tarefas ligadas ao trabalho, aos cuidados de casa e dos filhos, fora gastos com estes últimos. Ela usa Excel para fazer estes controles, porém sente falta de algo mais prático.
 
