@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">PRP</a>
+  <a class="navbar-brand" href="<?= route('home') ?>">PRP</a>
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
